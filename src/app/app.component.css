@@ -3,8 +3,8 @@
 }
 .example-button-row button,
 .example-button-row a {
-  margin-right: 8px;
-  margin-left: 10px;
+  margin-right: 10px;
+  margin-left: 20px;
   justify-self: center;
   align-self: center;
 
@@ -19,11 +19,32 @@
 }
 .box>p{
   margin-left: 25px;
+  margin-right: 25px;
 }
 .info{
+  display: flex;
   padding: 0;
   margin: 0;
   background-color: blue;
   width: 500px;
+  height: 20px;
   margin-left: 50px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
 }
+
+.time-box, .butt-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 50%;
+}
+
+.time-box{
+  font-size: 35px;
+}
+
+

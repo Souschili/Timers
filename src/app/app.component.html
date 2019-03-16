@@ -1,23 +1,37 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-tab-group>
-    <mat-tab label="First">
+    <mat-tab label="My Awesome Timers">
       <div  *ngFor="let timer of listOfTimers">
         <div class="box example-button-row">
+            <p>Timer {{timer.id}}</p>
             <p>{{timer.myTimer.toLocaleTimeString()}}</p>
-            <button mat-fab color="accent" (click)="Start(timer)" >Start</button>
-            <button mat-fab color="accent" (click)="Stop(timer)" >Stop</button>
-
-
+            <button *ngIf="!timer.isWork" mat-fab color="accent" (click)="timerStart(timer)" >Start</button>
+            <button *ngIf="timer.isWork" mat-fab color="accent" (click)="timerStop(timer)" >Stop</button>
+            <button  mat-fab color="primary" (click)="clearTimer(timer)" [disabled]="timer.isWork">Reset</button>
         </div>
         <div class="info">
-          <p>status</p>
+          <p *ngIf="timer.isWork">Timer {{timer.id}} started</p>
+          <p *ngIf="!timer.isWork">Timer {{timer.id}} Stoped</p>
         </div>
       </div>
-
-
     </mat-tab>
-    <mat-tab label="Second">Content 2</mat-tab>
-    <mat-tab label="Third">Content 3</mat-tab>
+    <mat-tab label="Stopwatch">
+        <div class="box example-button-row">
+          <div class="time-box">
+            <p>{{stopWatch.myTimer.toLocaleTimeString()}} <small>{{stopWatch.myTimer.getMilliseconds()/10}}</small></p>
+          </div>
+          <div class="butt-box">
+            <button *ngIf="!stopWatch.isWork" mat-fab color="accent" (click)="timerStart(stopWatch)" >Start</button>
+            <button *ngIf="stopWatch.isWork" mat-fab color="accent" (click)="timerStop(stopWatch)" >Stop</button>
+            <button  mat-fab color="primary" (click)="clearTimer(stopWatch)" [disabled]="stopWatch.isWork">Reset</button>
+          </div>
+        </div>
+        <div class="info">
+            <p *ngIf="stopWatch.isWork">Stopwatch started</p>
+            <p *ngIf="!stopWatch.isWork">Stopwatch stoped</p>
+          </div>
+    </mat-tab>
+
   </mat-tab-group>
 
 

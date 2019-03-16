@@ -1,5 +1,5 @@
 
-import { interval } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 import { takeWhile, tap } from 'rxjs/operators';
 import { ɵplatformCoreDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
@@ -8,7 +8,9 @@ export class Timer {
  id:number;
  isWork:boolean;
  myTimer = new Date();
- source=interval(1000);
+ // Подписка на него
+ sub$:Subscription;
+
 
 
  constructor(id:number) {
@@ -18,15 +20,14 @@ export class Timer {
     this.isWork=false;
  }
 
+ // Альтернативое решение ,оставил на всякий
  startTimer(){
-  //this.source.subscribe(()=> this.myTimer.setSeconds(this.myTimer.getSeconds()+1));
+  this.sub$=interval(1000).subscribe(()=> this.myTimer.setSeconds(this.myTimer.getSeconds()+1));
 
  }
 
  stopTimer(){
-
-
-
+  this.sub$.unsubscribe();
  }
 
 }
