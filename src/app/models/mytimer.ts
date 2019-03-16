@@ -1,19 +1,22 @@
-import { timer } from 'rxjs/internal/observable/timer';
+
+import { interval, Subscription } from 'rxjs';
 
 export class Timer {
-  
+
 id:number;
  myTimer = new Date();
+ source=interval(1000);
  // к чему будем цепляться извне для подписки
- source;
+ subscribe:Subscription
 
  constructor(id:number) {
-
    // обнулили таймер
     this.myTimer.setHours(0,0,0,0);
-   this.id=id;
-   this.source = timer(1000, 1000);
+    this.id=id;
  }
 
+ StartTimer(){
+  this.subscribe=this.source.subscribe(()=> this.myTimer.setSeconds(this.myTimer.getSeconds()+1));
+ }
 
 }

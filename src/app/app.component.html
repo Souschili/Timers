@@ -1,8 +1,21 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<mat-tab-group mat-align-tabs="center">
+<mat-tab-group>
     <mat-tab label="First">
-      
+      <div  *ngFor="let timer of listOfTimers">
+        <div class="box example-button-row">
+            <p>{{timer.myTimer.toLocaleTimeString()}}</p>
+            <button mat-fab color="accent" (click)="Start(timer)" >Start</button>
+
+        </div>
+        <div class="info">
+          <p>status</p>
+        </div>
+      </div>
+
+
     </mat-tab>
     <mat-tab label="Second">Content 2</mat-tab>
     <mat-tab label="Third">Content 3</mat-tab>
   </mat-tab-group>
+
+
