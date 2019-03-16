@@ -5,6 +5,8 @@
         <div class="box example-button-row">
             <p>{{timer.myTimer.toLocaleTimeString()}}</p>
             <button mat-fab color="accent" (click)="Start(timer)" >Start</button>
+            <button mat-fab color="accent" (click)="Stop(timer)" >Stop</button>
+
 
         </div>
         <div class="info">
@@ -17,5 +19,6 @@
     <mat-tab label="Second">Content 2</mat-tab>
     <mat-tab label="Third">Content 3</mat-tab>
   </mat-tab-group>
+
 
 

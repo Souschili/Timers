@@ -1,5 +1,6 @@
 import { Timer } from './models/mytimer';
 import { Component } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
 
 
 
@@ -10,6 +11,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  myObserver$=interval(1000);
+  //subscrption:Subscription
   listOfTimers:Array<Timer>
   constructor(){
     this.listOfTimers=[new Timer(1),new Timer(2), new Timer(3)];
@@ -17,6 +20,14 @@ export class AppComponent {
 
   // запуск таймера
   Start(value:Timer) {
-    value.StartTimer();
+    //this.subscrption=this.myObserver$.subscribe(()=> value.myTimer.setSeconds(value.myTimer.getSeconds() + 1));
+    value.startTimer();
+  }
+
+  Stop(value:Timer){
+    value.isWork=false;
+    value.stopTimer();
+
   }
 }
+

@@ -1,22 +1,32 @@
 
-import { interval, Subscription } from 'rxjs';
+import { interval } from 'rxjs';
+import { takeWhile, tap } from 'rxjs/operators';
+import { ɵplatformCoreDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
 export class Timer {
 
-id:number;
+ id:number;
+ isWork:boolean;
  myTimer = new Date();
  source=interval(1000);
- // к чему будем цепляться извне для подписки
- subscribe:Subscription
+
 
  constructor(id:number) {
    // обнулили таймер
     this.myTimer.setHours(0,0,0,0);
     this.id=id;
+    this.isWork=false;
  }
 
- StartTimer(){
-  this.subscribe=this.source.subscribe(()=> this.myTimer.setSeconds(this.myTimer.getSeconds()+1));
+ startTimer(){
+  //this.source.subscribe(()=> this.myTimer.setSeconds(this.myTimer.getSeconds()+1));
+
+ }
+
+ stopTimer(){
+
+
+
  }
 
 }
